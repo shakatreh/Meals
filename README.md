@@ -1,14 +1,94 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+# 🍽️ KMM Meals App
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+A Kotlin Multiplatform Mobile (KMM) application built using **Compose Multiplatform** with **shared UI**, targeting both **Android** and **iOS**. This app fetches and displays meals from [TheMealDB API](https://www.themealdb.com/api.php) and is part of a senior engineer assignment.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## 📱 Features
+
+### 🧾 Meals Listing
+- Two meal categories: **Seafood** and **Beef**
+- Displays:
+  - Meal name
+  - Thumbnail image
+- Handled UI states:
+  - Loading
+  - Success
+  - Error (with retry)
+
+### 🍛 Meal Details
+- Shows:
+  - Meal name
+  - Area (cuisine)
+  - Instructions (scrollable)
+  - Full-size image
+
+## 🛠️ Tech Stack
+
+| Layer            | Technology                  |
+|------------------|-----------------------------|
+| UI               | Compose Multiplatform       |
+| Architecture     | MVVM + Clean Architecture   |
+| Networking       | Ktor Client (commonMain)    |
+| State Management | Kotlin StateFlow            |
+| DI               | Koin (shared + platforms)   |
+| Serialization    | kotlinx.serialization       |
+
+## 📁 Folder Structure
+
+Meal/
+├── shared/ # Shared KMM module
+│ ├── data/ # API, DTOs, repository implementations
+│ ├── domain/ # Models, UseCases, repository interfaces
+│ ├── presentation/ # ViewModels, Composables
+│ ├── di/ # Koin modules
+│ └── utils/ # Common utils
+├── androidApp/ # Android-specific code
+│ └── MainActivity.kt # Hosts Compose shared UI
+├── iosApp/ # iOS-specific code
+│ └── AppDelegate.swift # Hosts Compose UI controller
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+- Android Studio (Giraffe+)
+- Xcode 14+
+- macOS with Kotlin Multiplatform & Compose Multiplatform support
+
+### 🤖 Run on Android
+
+1. Open the project in Android Studio
+2. Select `androidApp` configuration
+3. Click **Run**
+
+### 🍏 Run on iOS
+
+1. Open `iosApp/iosApp.xcworkspace` in Xcode
+2. Set a simulator (e.g., iPhone 14)
+3. Run the app (⌘ + R)
+
+> Ensure CocoaPods is installed and run `pod install` in `iosApp` before launching
+
+## 🖼️ Screenshots
+
+(Add screenshots here if available)
+
+## 🎯 Bonus Implemented
+
+- [ ] Local caching via SQLDelight
+- [ ] Pagination
+- [ ] Unit tests
+- [ ] Dark mode support
+- [ ] Accessibility improvements
+
+## 📦 API Reference
+
+- [List Seafood Meals](https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood)
+- [List Beef Meals](https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef)
+- [Meal Details](https://www.themealdb.com/api/json/v1/1/lookup.php?i={mealId})
+
+## 👨‍💻 Author
+
+Belal Shakhatreh
