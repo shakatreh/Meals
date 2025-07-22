@@ -1,0 +1,29 @@
+CREATE TABLE FoodDetailsTable (
+  id TEXT NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  area TEXT NOT NULL,
+  instruction TEXT NOT NULL,
+  image TEXT NOT NULL,
+  timestamp INTEGER NOT NULL
+);
+
+selectAllDetails:
+SELECT * FROM FoodDetailsTable;
+
+selectDetailById:
+SELECT * FROM FoodDetailsTable WHERE id = ?;
+
+insertDetail:
+INSERT INTO FoodDetailsTable(id, name, area, instruction, image, timestamp) VALUES (?, ?, ?, ?, ?, ?);
+
+updateDetail:
+UPDATE FoodDetailsTable SET name = ?, area = ?, instruction = ?, image = ? WHERE id = ?;
+
+replaceDetail:
+INSERT OR REPLACE INTO FoodDetailsTable(id, name, area, instruction, image, timestamp) VALUES (?, ?, ?, ?, ?, ?);
+
+deleteDetail:
+DELETE FROM FoodDetailsTable WHERE id = ?;
+
+selectTop1:
+SELECT timestamp FROM FoodDetailsTable WHERE id = ? LIMIT 1;

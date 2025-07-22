@@ -8,7 +8,10 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.sqldelight)
 }
+
+
 
 kotlin {
     androidTarget {
@@ -40,6 +43,7 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.android.driver)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -61,11 +65,23 @@ kotlin {
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+            implementation(libs.runtime)
+            implementation(libs.kotlinx.datetime)
+
         }
         nativeMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.native.driver)
         }
 
+    }
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set("com.coding.meal.sqldelight.cache")
+        }
     }
 }
 

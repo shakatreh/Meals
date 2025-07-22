@@ -1,0 +1,10 @@
+CREATE TABLE CacheInfo (
+  table_name TEXT NOT NULL PRIMARY KEY,
+  last_update_time INTEGER NOT NULL
+);
+
+selectCacheTime:
+SELECT last_update_time FROM CacheInfo WHERE table_name = ?;
+
+replaceCacheTime:
+INSERT OR REPLACE INTO CacheInfo(table_name, last_update_time) VALUES (?, ?);

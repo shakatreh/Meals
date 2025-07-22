@@ -1,0 +1,23 @@
+CREATE TABLE Beef (
+  id TEXT NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  image TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM Beef;
+
+selectById:
+SELECT * FROM Beef WHERE id = ?;
+
+insertFood:
+INSERT INTO Beef(id, name, image) VALUES (?, ?, ?);
+
+updateFood:
+UPDATE Beef SET name = ?, image = ? WHERE id = ?;
+
+replaceFood:
+INSERT OR REPLACE INTO Beef(id, name, image) VALUES (?, ?, ?);
+
+deleteFood:
+DELETE FROM Beef WHERE id = ?;

@@ -1,0 +1,23 @@
+CREATE TABLE SeaFood (
+  id TEXT NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  image TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM SeaFood;
+
+selectById:
+SELECT * FROM SeaFood WHERE id = ?;
+
+insertFood:
+INSERT INTO SeaFood(id, name, image) VALUES (?, ?, ?);
+
+updateFood:
+UPDATE SeaFood SET name = ?, image = ? WHERE id = ?;
+
+replaceFood:
+INSERT OR REPLACE INTO SeaFood(id, name, image) VALUES (?, ?, ?);
+
+deleteFood:
+DELETE FROM SeaFood WHERE id = ?;
