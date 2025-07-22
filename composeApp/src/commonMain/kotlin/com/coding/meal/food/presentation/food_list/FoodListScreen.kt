@@ -27,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -82,6 +83,7 @@ fun FoodListScreen(
 
     Column(
         modifier = Modifier
+            .testTag("FoodListScreen")
             .fillMaxSize()
             .background(DarkBlue)
             .statusBarsPadding(),
@@ -155,6 +157,7 @@ fun FoodListScreen(
                 ) { pageIndex ->
                     Box(
                         modifier = Modifier
+                            .testTag("PagerPage_$pageIndex")
                             .fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
@@ -188,7 +191,9 @@ fun FoodListScreen(
                                                 onFoodClick = {
                                                     onAction(FoodListAction.OnFoodClick(it))
                                                 },
-                                                modifier = Modifier.fillMaxSize(),
+                                                modifier = Modifier
+                                                    .testTag("FoodList_$pageIndex")
+                                                    .fillMaxSize(),
                                             )
                                         }
                                     }
@@ -224,7 +229,9 @@ fun FoodListScreen(
                                                 onFoodClick = {
                                                     onAction(FoodListAction.OnFoodClick(it))
                                                 },
-                                                modifier = Modifier.fillMaxSize(),
+                                                modifier = Modifier
+                                                    .testTag("FoodList_$pageIndex")
+                                                    .fillMaxSize(),
                                             )
                                         }
                                     }

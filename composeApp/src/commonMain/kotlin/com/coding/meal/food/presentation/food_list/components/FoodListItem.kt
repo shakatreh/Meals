@@ -35,6 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -55,6 +56,7 @@ fun FoodListItem(
     Surface(
         shape = RoundedCornerShape(32.dp),
         modifier = modifier
+            .testTag("FoodListItem")
             .clickable(onClick = onClick),
         color = LightGrey.copy(alpha = 0.3f)
     ) {

@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -57,6 +58,7 @@ fun FoodDetailsScreen(
 ) {
     Column(
         modifier = Modifier
+            .testTag("FoodDetailsScreen")
             .fillMaxSize()
             .padding(bottom = 16.dp)
     ) {
@@ -66,7 +68,7 @@ fun FoodDetailsScreen(
                 .padding(end = 16.dp, bottom = 16.dp, top = 16.dp),
             verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
         ) {
-            IconButton(onClick = onBackClick) {
+            IconButton(onClick = onBackClick, modifier = Modifier.testTag("BackButton")) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = ""
@@ -75,6 +77,9 @@ fun FoodDetailsScreen(
             Spacer(modifier = Modifier.width(2.dp))
             Text(
                 text = state.foodDetails?.name ?: "",
+                modifier = Modifier
+                    .testTag("FoodDetailsTitle")
+                    .padding(horizontal = 16.dp),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
