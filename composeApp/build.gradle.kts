@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -31,9 +30,6 @@ kotlin {
     }
     
 
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
 
     sourceSets {
         
@@ -59,8 +55,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.kotlinx.serialization.json)
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.sqlite.bundled)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             api(libs.koin.core)
@@ -72,9 +66,6 @@ kotlin {
             implementation(libs.ktor.client.darwin)
         }
 
-        dependencies {
-            ksp(libs.androidx.room.compiler)
-        }
     }
 }
 

@@ -35,7 +35,7 @@ A Kotlin Multiplatform Mobile (KMM) application built using **Compose Multiplatf
 ## 📁 Folder Structure
 
 Meal/
-├── shared/ # Shared KMM module
+├── commonMain/ # Shared KMM module
 │ ├── data/ # API, DTOs, repository implementations
 │ ├── domain/ # Models, UseCases, repository interfaces
 │ ├── presentation/ # ViewModels, Composables
@@ -44,7 +44,7 @@ Meal/
 ├── androidApp/ # Android-specific code
 │ └── MainActivity.kt # Hosts Compose shared UI
 ├── iosApp/ # iOS-specific code
-│ └── AppDelegate.swift # Hosts Compose UI controller
+│ └── iOSApp.swift # Hosts Compose UI controller
 
 
 
@@ -57,7 +57,7 @@ Meal/
 - Xcode 14+
 - macOS with Kotlin Multiplatform & Compose Multiplatform support
 
-### 🤖 Run on Android
+### Run on Android
 
 1. Open the project in Android Studio
 2. Select `androidApp` configuration

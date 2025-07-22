@@ -42,9 +42,7 @@ fun App() {
 
 
                 composable<Route.FoodDetails> {
-
                     val viewModel = koinViewModel<FoodDetailsViewModel>()
-
                     FoodDetailsScreenRoot(
                         viewModel=viewModel,
                         onBackClick = { navController.popBackStack()}
