@@ -44,6 +44,12 @@ kotlin {
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.android.driver)
+
+            implementation(libs.junit)
+            implementation(libs.androidx.test.junit)
+            implementation(libs.androidx.espresso.core)
+            implementation(libs.ui.test.junit4)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -67,7 +73,7 @@ kotlin {
             implementation(libs.bundles.coil)
             implementation(libs.runtime)
             implementation(libs.kotlinx.datetime)
-
+            implementation(kotlin("test"))
         }
         nativeMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -95,6 +101,7 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
         resources {
@@ -114,5 +121,17 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+
+
+    // Unit‐testing (JVM tests)
+    testImplementation(kotlin("test")) // Kotlin’s stdlib test framework
+    testImplementation(libs.junit) // if you prefer JUnit 4
+
+    // Android‐instrumented tests
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    // For Compose UI tests
+    androidTestImplementation(libs.ui.test.junit4)
+
 }
 
